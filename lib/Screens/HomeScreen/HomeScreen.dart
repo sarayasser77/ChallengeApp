@@ -1,8 +1,11 @@
+import 'package:challengeapp/Screens/detailsScreen/detailsScreen.dart';
 import 'package:challengeapp/widgets/indecator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../model/model.dart';
 import '../../widgets/banneritem.dart';
+import '../../widgets/newscomponent.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -110,44 +113,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.vertical,
                     itemCount: 5,
                     itemBuilder: (context,index){
-                  return Row(
-                    children: [
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                           borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage('images/football.jpg'),
-                          )
-                        ),
-                        height: screenHeight*.17,
-                      width: screenWidth*.4,
-                      ),
-                    ),
-                    Expanded(
+                  return Newscomponent(
+                    screenHeight: screenHeight, screenWidth: screenWidth, newsComponent:
+                  NewItems(
+                      categoryName: 'Sports', image: 'images/football.jpg', overView: 'gfhghgh',
+                      desc: 'What do vollyball players need?', title: 'SPORTS', source: 'CNN', date: '26/7/2003', authorName: 'sara'
 
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text('sports',style: TextStyle(color: Colors.grey,fontSize: 15),),
-                          const Text('What Training Do Vollyball Players Need',style: TextStyle(color: Colors.black,fontSize: 19),),
-                          Row(
-                            children:  [
-                              const CircleAvatar(
-                                radius: 12,
-                                backgroundImage: AssetImage('images/asta.jpg'),
-                              ),
-                              SizedBox(width: screenWidth*.05,),
-                              const Text('sara . 26/7/2003'),
-                            ],
-                          )
-                        ],                      ),
-                    )
-                    ],
-                  );
+                  ) ,);
                 }),
               )
             ],
@@ -157,5 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
 
 
