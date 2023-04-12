@@ -1,23 +1,33 @@
-class NewItems{
-  final String categoryName;
-  final String image;
-  final String overView;
-  final String desc;
-  final String title;
-  final String source;
-  final String date;
-  final String authorName;
+class NewsModel{
+   int? id;
+   String? name;
+   String? urltoimage;
+   String? author;
+   String? desc;
+   String? content;
+   String? source;
+   String? publishedAt;
 
 
-  const NewItems({
-    required this.categoryName,
-    required this.image,
-    required this.overView,
+   NewsModel({
+    required this.id,
+    required this.name,
+    required this.urltoimage,
+    required this.author,
     required this.desc,
-    required  this.title,
+    required  this.content,
     required this.source,
-    required this.date,
-    required this.authorName
+    required this.publishedAt,
   });
+
+  NewsModel.fromjson({required Map<String?,dynamic>data}){
+    id=data['source']['id'];
+    name=data['source']['name'];
+    urltoimage=data['urlToImage'];
+    author=data['author'];
+    desc=data['description'];
+    content=data['content'];
+   source=data['source'];
+  }
 }
 

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 class DetailsScreen extends StatelessWidget {
-  final NewItems newitems;
+  final NewsModel newitems;
 
   DetailsScreen(this.newitems );
 
@@ -55,7 +55,7 @@ class DetailsScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               fit: BoxFit.fill,
-                              image: AssetImage(newitems.image))
+                              image: AssetImage(newitems.urltoimage!))
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,

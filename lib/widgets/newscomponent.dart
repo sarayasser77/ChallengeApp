@@ -13,7 +13,7 @@ class Newscomponent extends StatelessWidget {
 
   final double screenHeight;
   final double screenWidth;
-final NewItems newsComponent;
+final NewsModel newsComponent;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -22,9 +22,12 @@ final NewItems newsComponent;
           child: GestureDetector(
             onTap: (){
               Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                  DetailsScreen(NewItems(categoryName: newsComponent.categoryName, image: newsComponent.image,
-                      overView: newsComponent.overView, desc: newsComponent.desc, title: newsComponent.title, source: newsComponent.source,
-                      date: newsComponent.date, authorName: newsComponent.authorName))));
+                  DetailsScreen(
+                      NewsModel(id: null, name: newsComponent.name, urltoimage: newsComponent.urltoimage,
+                          author: newsComponent.author, desc: newsComponent.desc, content: newsComponent.content, source: newsComponent.source,
+                          publishedAt: newsComponent.publishedAt
+
+                      ))));
             }
             ,child: Container(
             margin: EdgeInsets.all(8),
@@ -33,7 +36,7 @@ final NewItems newsComponent;
                 borderRadius: BorderRadius.circular(20),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(newsComponent.image),
+                  image: AssetImage(newsComponent!.urltoimage!),
                 )
             ),
             height: screenHeight*.17,
@@ -46,8 +49,8 @@ final NewItems newsComponent;
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-               Text(newsComponent.title,style: TextStyle(color: Colors.grey,fontSize: 15),),
-               Text(newsComponent.desc,style: TextStyle(color: Colors.black,fontSize: 19),),
+               Text(newsComponent.name!,style: TextStyle(color: Colors.grey,fontSize: 15),),
+               Text(newsComponent.desc!,style: TextStyle(color: Colors.black,fontSize: 19),),
               Row(
                 children:  [
                   const CircleAvatar(
@@ -55,9 +58,9 @@ final NewItems newsComponent;
                     backgroundImage: AssetImage('images/asta.jpg'),
                   ),
                   SizedBox(width: screenWidth*.05,),
-                   Text(newsComponent.authorName),
+                   Text(newsComponent.author!),
                   SizedBox(width: screenWidth*.05,),
-                  Text(newsComponent.date),
+                  Text(newsComponent.publishedAt!),
 
                 ],
               )

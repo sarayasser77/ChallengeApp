@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context)=>NewsCubit())
+        BlocProvider(create: (context)=>NewsCubit()..getNews())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
